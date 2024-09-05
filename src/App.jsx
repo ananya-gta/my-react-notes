@@ -1,49 +1,38 @@
-import LOGO from "./assets/react-core-concepts.png";
 import { CORE_CONCEPTS } from "./data.js";
-
-const terms = ["Fundamental", "Crucial", "Core"];
-function getRandomInt(max) {
-  return Math.floor(Math.random() * (max + 1));
-}
-
-function CoreConcept(props) {
-  return (
-    <li>
-      <img src={props.image} alt={props.title} className="src" />
-      <h3>{props.title}</h3>
-      <p>{props.description}</p>
-    </li>
-  );
-}
+import CoreComponent from "./components/CoreComponent/CoreComponent.jsx";
+import Header from "./components/Header/Header.jsx";
+import TabButton from "./components/TabButton/TabButton.jsx"
 
 function App() {
   return (
     <div>
-      <header>
-        <img src={LOGO} alt="Stylized atom" />
-        <h1>Ananya's React Notes</h1>
-        <p>
-          {terms[getRandomInt(3)]} React concepts needed for almost any app you are going to
-          build!
-        </p>
-      </header>
+      <Header />
       <main>
         <section id="core-concepts">
           <h2>Core Concepts</h2>
           <ul>
-            <CoreConcept
+            <CoreComponent
               title={CORE_CONCEPTS[0].title}
               description={CORE_CONCEPTS[0].description}
               image={CORE_CONCEPTS[0].image}
             />
-            <CoreConcept
+            <CoreComponent
               title={CORE_CONCEPTS[1].title}
               description={CORE_CONCEPTS[1].description}
               image={CORE_CONCEPTS[1].image}
             />
-            <CoreConcept {...CORE_CONCEPTS[2]} />
-            <CoreConcept {...CORE_CONCEPTS[3]} />
+            <CoreComponent {...CORE_CONCEPTS[2]} />
+            <CoreComponent {...CORE_CONCEPTS[3]} />
           </ul>
+        </section>
+        <section id="examples">
+          <h2>Examples</h2>
+          <menu>
+            <TabButton>Components</TabButton>
+            <TabButton>JSX</TabButton>
+            <TabButton>Props</TabButton>
+            <TabButton>State</TabButton>
+          </menu>
         </section>
       </main>
     </div>
